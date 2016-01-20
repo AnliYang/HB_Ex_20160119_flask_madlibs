@@ -5,7 +5,18 @@
 </head>
 <body>
     <p>There once was a {{ color }} {{ noun }} sitting in the
-     Hackbright lab. When {{ person }} went to pick it up,
-     it burst into flames in a totally {{ adjective }} way.</p>
+    Hackbright lab. When 
+    {% for person in people %}
+        {% if loop.length != 1 %}
+            {{ person }},
+        {% else %}
+            {{ person }}
+        {% endif %}   
+    {% endfor %}
+    {% if people %}
+        and
+    {% endif %}
+    {{ last_person }} went to pick it up,
+    it burst into flames in a totally {{ adjective }} way.</p>
 </body>
 </html>

@@ -53,12 +53,12 @@ def show_game_form():
 def show_madlib():
     """Shows completed madlib with user inputs filled in"""
 
-    person = request.args.get("person")
+    people = request.args.getlist("person")
     color = request.args.get("color").lower()
     noun = request.args.get("noun").lower()
     adjective = request.args.get("adjective").lower()
 
-    return render_template("madlib.html", person=person, color=color, noun=noun, adjective=adjective)
+    return render_template("madlib.html", people=people[:-1], last_person=people[-1], color=color, noun=noun, adjective=adjective)
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads" our web app
